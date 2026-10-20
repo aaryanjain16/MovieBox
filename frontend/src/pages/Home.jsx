@@ -33,7 +33,7 @@ function Home({ watched, setWatched, watchlist, setWatchlist, auth}) {
   async function addToWatchlist(movie){
     try{
       const response = await fetch(
-        "${API}/watchlist",
+        `${API}/watchlist`,
         {
           method: "POST",
           headers: {

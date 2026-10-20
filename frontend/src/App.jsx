@@ -1,3 +1,5 @@
+const API = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 import './App.css'
 import { useState, useEffect } from 'react';
 import Home from './pages/Home';
@@ -45,7 +47,7 @@ function App() {
   async function deleteFromWatchlist(imdbID){
     try{
       const response = await fetch(
-        `http://127.0.0.1:8000/watchlist/${imdbID}`,
+        `${API}/watchlist/${imdbID}`,
         {
           method: "DELETE",
           headers: {
@@ -87,7 +89,7 @@ function App() {
 
     try {
         const response = await fetch(
-            `http://127.0.0.1:8000/watchlist/${selectedMovie.imdbID}/watched`,
+            `${API}/watchlist/${selectedMovie.imdbID}/watched`,
             {
                 method: "PUT",
                 headers: {

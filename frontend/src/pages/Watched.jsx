@@ -12,7 +12,7 @@ function Watched({auth}){
             
             try{
                 const response = await fetch(
-                    "${API}/watched", {
+                    `${API}/watched`, {
                         
                         headers: {
                             "Authorization" : `Bearer ${auth.access_token}`

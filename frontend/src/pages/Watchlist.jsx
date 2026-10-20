@@ -11,7 +11,7 @@ function Watchlist({watchlist,setWatchlist, deleteFromWatchlist, openReviewModal
         async function loadWatchlist(){
             try{
                 const response = await fetch(
-                    "${API}/watchlist", {
+                    `${API}/watchlist`, {
                         headers: {
                             "Authorization" : `Bearer ${auth.access_token}`
                         }

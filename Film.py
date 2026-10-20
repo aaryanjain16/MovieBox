@@ -107,7 +107,8 @@ app = FastAPI(
 #Allow React to connect to fastApi
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173","http://127.0.0.1:5173","https://movie-box-fawn.vercel.app"],
+    allow_origins=["http://localhost:5173","http://127.0.0.1:5173","https://movie-box-fawn.vercel.app", "https://movie-p82hjvyvaq-aaryan-jain.vercel.app"],
+    allow_credentials=True,
     allow_headers=["*"],
     allow_methods=["*"]
 )

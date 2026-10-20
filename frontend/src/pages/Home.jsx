@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+const API = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 import SearchBar from '../Components/SearchBar';
 import MovieList from '../Components/MovieList';
 import Auth from './Auth';
@@ -16,7 +18,7 @@ function Home({ watched, setWatched, watchlist, setWatchlist, auth}) {
     if(title === "") return;
 
     try{
-      const response = await fetch(`http://127.0.0.1:8000/search/${encodeURIComponent(title)}`);
+      const response = await fetch(`${API}/search/${encodeURIComponent(title)}`);
 
       const data = await response.json();
     
@@ -31,7 +33,7 @@ function Home({ watched, setWatched, watchlist, setWatchlist, auth}) {
   async function addToWatchlist(movie){
     try{
       const response = await fetch(
-        "http://127.0.0.1:8000/watchlist",
+        "${API}/watchlist",
         {
           method: "POST",
           headers: {

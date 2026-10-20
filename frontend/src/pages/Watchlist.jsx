@@ -1,3 +1,5 @@
+const API = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 import { useEffect } from "react";
 import WatchlistCard from "../Components/WatchlistCard";
 
@@ -9,7 +11,7 @@ function Watchlist({watchlist,setWatchlist, deleteFromWatchlist, openReviewModal
         async function loadWatchlist(){
             try{
                 const response = await fetch(
-                    "http://127.0.0.1:8000/watchlist", {
+                    "${API}/watchlist", {
                         headers: {
                             "Authorization" : `Bearer ${auth.access_token}`
                         }

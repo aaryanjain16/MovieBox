@@ -1,3 +1,5 @@
+const API = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 import { useEffect, useState } from "react";
 import WatchedCard from "../Components/WatchedCard";
 
@@ -10,7 +12,7 @@ function Watched({auth}){
             
             try{
                 const response = await fetch(
-                    "http://127.0.0.1:8000/watched", {
+                    "${API}/watched", {
                         
                         headers: {
                             "Authorization" : `Bearer ${auth.access_token}`

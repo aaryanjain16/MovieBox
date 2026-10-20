@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+asyncmy
+aiosqlite
+httpx
+python-dotenv
+PyJWT
+email-validator

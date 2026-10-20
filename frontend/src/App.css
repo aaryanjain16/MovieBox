@@ -1,0 +1,985 @@
+/* ================================
+   MOVIEBOX — GLASS + PURPLE THEME
+   ================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #f5f3ff;
+  background: #090914;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --bg: #090914;
+  --surface: rgba(255, 255, 255, 0.055);
+  --surface-hover: rgba(255, 255, 255, 0.09);
+  --border: rgba(255, 255, 255, 0.11);
+  --text: #f5f3ff;
+  --muted: #b8b3cb;
+  --purple: #a78bfa;
+  --purple-strong: #8b5cf6;
+  --purple-dark: #6d28d9;
+  --green: #10b981;
+  --red: #f43f5e;
+  --radius: 18px;
+  --glass-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(109, 40, 217, 0.22), transparent 38%),
+    radial-gradient(ellipse at 90% 25%, rgba(139, 92, 246, 0.13), transparent 32%),
+    linear-gradient(145deg, #090914 0%, #11101e 52%, #090914 100%);
+  background-attachment: fixed;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font-size: 14px;
+}
+
+button {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 16px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--purple-strong), var(--purple-dark));
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease, background 180ms ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.28);
+  filter: brightness(1.08);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  color: var(--text);
+  background: rgba(12, 11, 25, 0.72);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #88829f;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
+}
+
+textarea {
+  resize: vertical;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Main app layout: supports common sidebar/main class names. */
+#root {
+  min-height: 100vh;
+}
+
+.app,
+.app-layout,
+.layout,
+.dashboard,
+.main-layout {
+  min-height: 100vh;
+}
+
+main,
+.main-content,
+.page-content,
+.content,
+.dashboard-content {
+  color: var(--text);
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  width: 236px;
+  min-height: 100vh;
+  padding: 28px 18px 22px;
+  background: rgba(10, 9, 20, 0.72);
+  border-right: 1px solid var(--border);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.sidebar h1,
+.sidebar h2,
+.sidebar .logo,
+.logo {
+  margin: 0 0 28px;
+  padding: 0 12px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.sidebar nav,
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar a,
+.sidebar nav a,
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  color: #c7c2d8;
+  font-weight: 500;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.sidebar a:hover,
+.sidebar nav a:hover,
+.sidebar-nav a:hover {
+  color: #fff;
+  background: rgba(167, 139, 250, 0.10);
+}
+
+.sidebar a.active,
+.sidebar nav a.active,
+.sidebar-nav a.active,
+.sidebar a[aria-current='page'] {
+  color: #fff;
+  background: linear-gradient(110deg, rgba(139, 92, 246, 0.24), rgba(139, 92, 246, 0.08));
+  border-color: rgba(167, 139, 250, 0.2);
+}
+
+.sidebar button,
+.sidebar .logout-button {
+  width: 100%;
+  margin-top: auto;
+}
+
+.sidebar > button:last-child,
+.sidebar button:last-child {
+  margin-top: auto;
+}
+
+/* Offset app content when a fixed sidebar is present. */
+.main-content,
+.page-content,
+.content,
+.dashboard-content,
+main {
+  min-width: 0;
+}
+
+.main-content,
+.page-content,
+.content,
+.dashboard-content {
+  margin-left: 236px;
+  padding: 36px clamp(20px, 4vw, 56px);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+  color: #fff;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(28px, 3.4vw, 44px);
+  letter-spacing: -1.5px;
+}
+
+h2 {
+  letter-spacing: -0.6px;
+}
+
+/* Home and search */
+.home,
+.home-page,
+.search-page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.home h1,
+.home-page h1,
+.search-page h1 {
+  margin: 8px 0 28px;
+  text-align: center;
+}
+
+.search-bar,
+.search-container,
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 720px);
+  margin: 0 auto 30px;
+}
+
+.search-bar input,
+.search-container input,
+.search-form input {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-bar button,
+.search-container button,
+.search-form button {
+  flex-shrink: 0;
+}
+
+.search-result,
+.search-results,
+.movie-results {
+  margin-top: 26px;
+}
+
+/* Movie grids — applies to common class names without changing component logic. */
+.movie-list,
+.movies-grid,
+.movie-grid,
+.watchlist-grid,
+.watched-grid,
+.search-results-grid,
+.movie-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  align-items: stretch;
+  gap: 22px;
+  width: 100%;
+}
+
+.movie-card,
+.watchlist-card,
+.watched-card,
+.movie-item,
+.movie-result-card {
+  min-width: 0;
+  overflow: hidden;
+  padding: 12px;
+  color: var(--text);
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+
+.movie-card:hover,
+.watchlist-card:hover,
+.watched-card:hover,
+.movie-item:hover,
+.movie-result-card:hover {
+  transform: translateY(-4px);
+  background: var(--surface-hover);
+  border-color: rgba(167, 139, 250, 0.32);
+}
+
+.movie-card img,
+.watchlist-card img,
+.watched-card img,
+.movie-item img,
+.movie-result-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.movie-card h2,
+.movie-card h3,
+.watchlist-card h2,
+.watchlist-card h3,
+.watched-card h2,
+.watched-card h3,
+.movie-item h2,
+.movie-item h3,
+.movie-result-card h2,
+.movie-result-card h3 {
+  margin: 13px 0 8px;
+  font-size: 16px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.movie-card p,
+.watchlist-card p,
+.watched-card p,
+.movie-item p,
+.movie-result-card p {
+  margin: 7px 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.movie-card button,
+.watchlist-card button,
+.watched-card button,
+.movie-item button,
+.movie-result-card button {
+  margin: 5px 3px 0;
+}
+
+/* Keep semantic action colors where the existing components use these labels/classes. */
+button.delete-button,
+button.delete-btn,
+button[class*='delete'],
+.delete-button,
+.delete-btn {
+  background: linear-gradient(135deg, #fb7185, #e11d48);
+}
+
+button.watched-button,
+button.watched-btn,
+button[class*='watched'],
+.watched-button,
+.watched-btn {
+  background: linear-gradient(135deg, #34d399, #059669);
+}
+
+/* Watched page details */
+.rating,
+.rating-label,
+.review-label {
+  color: #ddd6fe;
+}
+
+.star,
+.rating-stars span {
+  color: #fbbf24;
+  cursor: pointer;
+}
+
+/* Authentication */
+.auth-page,
+.auth-container,
+.login-page,
+.register-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.auth-card,
+.auth-form,
+.login-card,
+.register-card {
+  width: min(100%, 430px);
+  padding: clamp(24px, 5vw, 38px);
+  background: rgba(24, 20, 42, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42), 0 0 45px rgba(139, 92, 246, 0.10);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.auth-card h1,
+.auth-form h1,
+.login-card h1,
+.register-card h1 {
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.auth-card form,
+.auth-form form,
+.login-card form,
+.register-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-card button,
+.auth-form button,
+.login-card button,
+.register-card button {
+  width: 100%;
+  min-height: 44px;
+}
+
+.auth-card p,
+.auth-form p,
+.login-card p,
+.register-card p {
+  color: var(--muted);
+  text-align: center;
+}
+
+.auth-card p button,
+.auth-form p button,
+.login-card p button,
+.register-card p button {
+  width: auto;
+  min-height: auto;
+  padding: 4px 6px;
+  color: #c4b5fd;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Review modal — compatible with the existing ReviewModal class names. */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(4, 3, 12, 0.76);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.review-modal {
+  position: relative;
+  width: min(100%, 500px);
+  max-height: min(90vh, 760px);
+  overflow-y: auto;
+  padding: 30px;
+  color: var(--text);
+  background: linear-gradient(145deg, rgba(35, 28, 58, 0.96), rgba(17, 15, 30, 0.96));
+  border: 1px solid rgba(196, 181, 253, 0.24);
+  border-radius: 22px;
+  box-shadow: 0 25px 90px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  animation: review-popup 180ms ease-out;
+}
+
+.review-modal h2 {
+  margin: 0 34px 8px 0;
+  font-size: 25px;
+}
+
+.review-movie-title {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.review-close-icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: #ddd6fe;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 23px;
+  line-height: 1;
+}
+
+.rating-label {
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.rating-stars .star {
+  color: #5b556c;
+  font-size: 32px;
+  line-height: 1;
+  transition: color 150ms ease, transform 150ms ease;
+}
+
+.rating-stars .star.selected,
+.rating-stars .star:hover {
+  color: #fbbf24;
+  transform: scale(1.08);
+}
+
+.review-textarea {
+  min-height: 115px;
+  margin-bottom: 18px;
+  line-height: 1.55;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-actions button {
+  flex: 1;
+  min-height: 44px;
+}
+
+.save-review-btn {
+  background: linear-gradient(135deg, var(--purple-strong), var(--purple-dark));
+}
+
+.close-review-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border);
+}
+
+@keyframes review-popup {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Empty states and messages */
+.empty-state,
+.no-results,
+.error-message,
+.success-message {
+  padding: 18px;
+  color: var(--muted);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 200px;
+    padding-inline: 12px;
+  }
+
+  .main-content,
+  .page-content,
+  .content,
+  .dashboard-content {
+    margin-left: 200px;
+    padding: 28px 20px;
+  }
+
+  .movie-card img,
+  .watchlist-card img,
+  .watched-card img,
+  .movie-item img,
+  .movie-result-card img {
+    height: 230px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    position: sticky;
+    inset: auto;
+    width: 100%;
+    min-height: auto;
+    padding: 14px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar h1,
+  .sidebar h2,
+  .sidebar .logo,
+  .logo {
+    margin: 0 0 12px;
+    padding: 0 4px;
+    font-size: 21px;
+  }
+
+  .sidebar nav,
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .sidebar a,
+  .sidebar nav a,
+  .sidebar-nav a {
+    min-height: 38px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+
+  .sidebar button,
+  .sidebar .logout-button,
+  .sidebar > button:last-child,
+  .sidebar button:last-child {
+    width: auto;
+    margin-top: 10px;
+  }
+
+  .main-content,
+  .page-content,
+  .content,
+  .dashboard-content {
+    margin-left: 0;
+    padding: 24px 14px;
+  }
+
+  h1 {
+    letter-spacing: -0.8px;
+  }
+
+  .movie-list,
+  .movies-grid,
+  .movie-grid,
+  .watchlist-grid,
+  .watched-grid,
+  .search-results-grid,
+  .movie-results-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .movie-card,
+  .watchlist-card,
+  .watched-card,
+  .movie-item,
+  .movie-result-card {
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  .movie-card img,
+  .watchlist-card img,
+  .watched-card img,
+  .movie-item img,
+  .movie-result-card img {
+    height: 210px;
+  }
+
+  .movie-card h2,
+  .movie-card h3,
+  .watchlist-card h2,
+  .watchlist-card h3,
+  .watched-card h2,
+  .watched-card h3,
+  .movie-item h2,
+  .movie-item h3,
+  .movie-result-card h2,
+  .movie-result-card h3 {
+    font-size: 14px;
+  }
+
+  .search-bar,
+  .search-container,
+  .search-form {
+    align-items: stretch;
+  }
+
+  .search-bar button,
+  .search-container button,
+  .search-form button {
+    padding-inline: 12px;
+  }
+
+  .review-modal {
+    padding: 24px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* =========================================================
+   REQUESTED FIXES: AUTH INPUT WIDTH + HOME SEARCH + AUTH CARD
+   ========================================================= */
+
+/* Login/Register: constrain the form so fields aren't stretched
+   across the whole screen. This works with a simple Auth.jsx form. */
+#root:has(input[type="password"]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+#root:has(input[type="password"]) > * {
+  width: min(100%, 440px);
+  min-width: 0;
+}
+
+/* If Auth.jsx has a wrapper around the heading/form, give it a glass card. */
+#root:has(input[type="password"]) > div {
+  width: min(100%, 440px);
+  padding: clamp(22px, 4vw, 34px);
+  background: rgba(24, 20, 42, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 22px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38), 0 0 40px rgba(139, 92, 246, 0.09);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+#root:has(input[type="password"]) form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+}
+
+#root:has(input[type="password"]) form input,
+#root:has(input[type="password"]) input[type="email"],
+#root:has(input[type="password"]) input[type="text"],
+#root:has(input[type="password"]) input[type="password"] {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 44px;
+  margin: 0;
+  padding: 0 13px;
+  font-size: 14px;
+  line-height: normal;
+}
+
+#root:has(input[type="password"]) input::placeholder {
+  font-size: 14px;
+  opacity: 1;
+}
+
+#root:has(input[type="password"]) form button {
+  width: 100%;
+  min-height: 43px;
+  margin: 0;
+}
+
+#root:has(input[type="password"]) p {
+  margin: 15px 0 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+#root:has(input[type="password"]) p button {
+  width: auto;
+  min-height: 34px;
+  margin-left: 5px;
+  padding: 5px 10px;
+}
+
+/* Home search: make the field and its placeholder easier to read. */
+.search-bar input,
+.search-container input,
+.search-form input {
+  min-height: 48px;
+  padding: 0 16px;
+  font-size: 16px;
+}
+
+.search-bar input::placeholder,
+.search-container input::placeholder,
+.search-form input::placeholder {
+  font-size: 15px;
+  color: #a39ab9;
+  opacity: 1;
+}
+
+.search-bar button,
+.search-container button,
+.search-form button {
+  min-height: 48px;
+  font-size: 14px;
+}
+
+/* Keep auth card compact on smaller screens too. */
+@media (max-width: 640px) {
+  #root:has(input[type="password"]) {
+    padding: 18px 14px;
+  }
+
+  #root:has(input[type="password"]) > div {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .search-bar input,
+  .search-container input,
+  .search-form input {
+    min-height: 46px;
+    padding-inline: 12px;
+    font-size: 15px;
+  }
+}
+/* Home page spacing */
+.home,
+.home-page,
+.search-page {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 8px 20px 32px;
+}
+
+/* Search form */
+.search-bar,
+.search-container,
+.search-form {
+  width: min(100%, 760px);
+  margin: 0 auto 24px;
+}
+
+.search-bar input,
+.search-container input,
+.search-form input {
+  min-height: 48px;
+  padding: 0 16px;
+  font-size: 15px;
+}
+
+.search-bar input::placeholder,
+.search-container input::placeholder,
+.search-form input::placeholder {
+  font-size: 14px;
+}
+
+/* Search results heading */
+.search-result h2,
+.search-results h2,
+.movie-results h2 {
+  margin: 20px 0;
+  text-align: center;
+}
+
+
+/* ===== LOGIN & REGISTER BUTTON SPACING ===== */
+
+/* Space between username, email, password fields */
+#root form input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 12px;
+}
+
+/* Space between the last input and Login/Register submit button */
+#root form button[type="submit"] {
+  display: block;
+  width: 100%;
+  margin: 4px 0 0;
+}
+
+/* Target the separate Login/Register toggle button.
+   Auth.jsx renders it immediately after the form. */
+#root form + button {
+  display: block;
+  margin: 14px auto 0;
+}
+
+/* Keep error messages from disrupting button spacing */
+#root form + p {
+  margin: 12px 0 0;
+}
+
+/* ===== HOME SEARCH SPACING ===== */
+
+/* Space the search button below the input */
+#root input[placeholder="Enter the Movie/TV Show name"] {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 46px;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+#root input[placeholder="Enter the Movie/TV Show name"] + button {
+  display: block;
+  margin: 0 auto 20px;
+}
